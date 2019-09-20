@@ -83,6 +83,13 @@ variable "data_sa_type" {
 #    "BIG-IP-BEST-200M" = "f5-networks,f5-big-ip-best,f5-bigip-virtual-edition-200m-best-hourly"
 #    "BIG-IP-BEST-1G"   = "f5-networks,f5-big-ip-best,f5-bigip-virtual-edition-1g-best-hourly"
 #    "BIG-IP-BEST-BYOL" = "f5-networks,f5-big-ip-best,f5-bigip-virtual-edition-best-byol"
+#marketplace image ---------------------------------
+#https://docs.microsoft.com/en-us/azure/virtual-machines/linux/cli-ps-findimage
+#to find out URN; 
+# - az vm image list --all --publisher F5
+#to find out plan info; 
+# - az vm image show --location koreacentral --urn f5-networks:f5-big-ip-good:f5-bigip-virtual-edition-25m-good-hourly:14.1.003000
+#
 
 variable "vm_os_publisher" {
   description = "The name of the publisher of the image that you want to deploy. This is ignored when vm_os_id or vm_os_simple are provided."
