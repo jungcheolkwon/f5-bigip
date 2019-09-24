@@ -6,7 +6,7 @@ This is working as one of its module and also you can use this for your own stan
 You need to update VM and plan part of the variable.tf file for your environment.<br/>
 and add some inforamtion to end of the foundations.auto.tfvars/foundations.tf files like following
 
-- virtual network info in foundations.auto.tfvars<br>
+# virtual network info in foundations.auto.tfvars<br>
 #virtual network<br>
 shared_services_vnet = {<br>
    region1 = {<br>
@@ -47,7 +47,7 @@ shared_services_vnet = {<br>
 }<br>
   
   
-- F5 module in foundations.tf
+# F5 module in foundations.tf
 #Create F5 BIGIP VE<br>
 module "f5_bigip" {<br>
  source  = "git@github.com:jungcheolkwon/f5bigip.git?ref=v1.75"<br>
