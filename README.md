@@ -60,6 +60,7 @@ module "f5_bigip" {<br>
  subnet_id                 = module.virtual_network.vnet_subnets["Intranet"]<br>
  network_security_group_id = module.virtual_network.nsg_vnet["Intranet"]<br>
 }<br>
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/foundations.tf.png)
 
 ## Capabilities
 
