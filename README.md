@@ -45,7 +45,7 @@ shared_services_vnet = {<br>
     }<br>
   }<br>
 }<br>
-![example](https://raw.githubusercontent.com/jungcheolkwon/f5-bigip/master/foundations.auto.tfvars.png)
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/foundations.auto.tfvars.png)
   
   
 # F5 module in foundations.tf
