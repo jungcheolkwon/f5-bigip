@@ -1,10 +1,10 @@
 # Create F5 BIG-IP VM or General VM
-This module is supporing to create F5 BIG-IP VM with blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility).
+This module is supporing to create F5 BIG-IP VM with blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility).<br>
 This is working as one of its module and also you can use this for your own standalone VM creator after some modify.
 
 ## Getting Started
 You need to update VM and plan part of the variable.tf file for your environment.<br/>
-and add some inforamtion to end of the foundations.auto.tfvars/foundations.tf files like following
+and add some inforamtion(your own information) to end of the foundations.auto.tfvars/foundations.tf files like following
 
 # virtual network info in foundations.auto.tfvars<br>
 #virtual network<br>
@@ -62,22 +62,3 @@ module "f5_bigip" {<br>
 }<br>
 ![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/foundations.tf.png)
 
-## Capabilities
-
- - Resource groups
-    - Core resource groups needed for hub-spoke topology.
- - Activity Logging
-    - Auditing all subscription activities and archiving
-        - Storage Account
-        - Event Hubs
-
-## Customization
-The provided foundations.auto.tfvars allows you to deploy your first version of blueprint_tranquility and see the typical options
-
-## Foundations
-Please do not modify the provided output variables but add additionnal below if you need to extend the model.
-
-
-
-## Contribute
-Pull requests are welcome to evolve the framework and integrate new features!
