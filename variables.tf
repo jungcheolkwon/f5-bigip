@@ -49,17 +49,17 @@ variable "storage_account_type" {
 
 variable "nb_instances" {
   description = "Specify the number of vm instances"
-  default     = "2"
+  default     = "1"
 }
 
 variable "nb_interfaces" {
   description = "Number of public IPs to assign corresponding to one IP per vm"
-  default     = "6"
+  default     = "1"
 }
 
 variable "nb_public_ip" {
   description = "Number of public IPs to assign corresponding to one IP per vm"
-  default     = "2"
+  default     = "1"
 }
 
 variable "public_ip_address_allocation" {
