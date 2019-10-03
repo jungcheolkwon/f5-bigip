@@ -92,17 +92,17 @@ variable "data_sa_type" {
 #
 
 variable "vm_os_publisher" {
-  description = "The name of the publisher of the image that you want to deploy. This is ignored when vm_os_id or vm_os_simple are provided."
+  description = "The name of the publisher of the image that you want to deploy."
   default     = "f5-networks"
 }
 
 variable "vm_os_offer" {
-  description = "The name of the offer of the image that you want to deploy. This is ignored when vm_os_id or vm_os_simple are provided."
+  description = "The name of the offer of the image that you want to deploy."
   default     = "f5-big-ip-best"
 }
 
 variable "vm_os_sku" {
-  description = "The sku of the image that you want to deploy. This is ignored when vm_os_id or vm_os_simple are provided."
+  description = "The sku of the image that you want to deploy."
   default     = "f5-bigip-virtual-edition-25m-best-hourly"
 }
 
