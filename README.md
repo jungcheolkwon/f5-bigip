@@ -1,5 +1,5 @@
 # Create F5 BIG-IP VM or General VM
-This module is supporing to create F5 BIG-IP VM with blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility).<br>
+This module is supporting to create F5 BIG-IP VM with blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility).<br>
 This is working as one of its module and also you can use this for your own standalone VM creator after some modify.
 
 ## Getting Started
