@@ -10,9 +10,9 @@ and add some inforamtion(your own information) to end of the foundations.tf file
 You can use all of the defaults parameters for your testing after some files updating like blueprint.tf, output.tf under each blueprint_networking directories where you want to add BIG-IP with main module file for F5BIG-IP.
 
 If you want to add BIG-IP into blueprint_networking_shared_egress and blueprint_networking_shared_transit, <br>you need to edit 2 files (blueprint.tf, output.tf) in the each directory and add F5BIGIP_Egress.tf, F5BIGIP_Transit.tf in landingzone_vdc_demo directory.<br>
-Of course, you can use your won module name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).
+Of course, you can use your won module's name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).
 
-So, let's see example lines for each file.
+So, let's see example lines for each file.(you can copy and paste all lines from ##start of testing to ##end of testing for each file) <br>
 ## blueprint_networking_shared_egress
  - add following lines in blueprint.tf
  
@@ -20,7 +20,7 @@ So, let's see example lines for each file.
   module "networking_shared_egress_vnet_vnet_nsg" { <br>
     source  = "aztfmod/caf-virtual-network/azurerm" <br>
     version = "0.2.0" <br>
-   <br>
+
     virtual_network_rg                = local.HUB-EGRESS-NET <br>
     prefix                            = var.prefix <br>
     location                          = var.location <br>
@@ -34,7 +34,7 @@ So, let's see example lines for each file.
   module "networking_shared_egress_vnet_vnet_subnets" { <br>
     source  = "aztfmod/caf-virtual-network/azurerm" <br>
     version = "0.2.0" <br>
-   <br>
+
     virtual_network_rg                = local.HUB-EGRESS-NET <br>
     prefix                            = var.prefix <br>
     networking_object                 = var.networking_object <br>
@@ -70,7 +70,7 @@ So, let's see example lines for each file.
   module "networking_transit_vnet_vnet_nsg" { <br>
     source  = "aztfmod/caf-virtual-network/azurerm" <br>
     version = "0.2.0" <br>
-   <br>
+
     virtual_network_rg                = local.HUB-NET-TRANSIT <br>
     prefix                            = var.prefix <br>
     location                          = var.location <br>
@@ -80,11 +80,11 @@ So, let's see example lines for each file.
     log_analytics_workspace           = var.log_analytics_workspace <br>
     diagnostics_settings              = var.networking_object.diagnostics <br>
   } <br>
-   <br>
+
   module "networking_transit_vnet_vnet_subnets" { <br>
     source  = "aztfmod/caf-virtual-network/azurerm" <br>
     version = "0.2.0" <br>
-   <br>
+
     virtual_network_rg                = local.HUB-NET-TRANSIT <br>
     prefix                            = var.prefix <br>
     networking_object                 = var.networking_object <br>
@@ -113,39 +113,35 @@ So, let's see example lines for each file.
   ##end of testing <br>
 
 
-## landingzone_vdc_demo
-create blueprint_f5bigip directory with below files
- - f5bigip.tf
- 
- - main.tf
- 
- - output.tf
- 
- - variables.tf
-
-  
 ## F5 modules under landingzone_vdc_demo
  - F5BIGIP_Egress.tf <br>
+
+  ##start of testing <br>
   module "f5bigip-egress" { <br>
-  ###  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
-  source  = "./blueprint_f5bigip" <br>
+    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
+    
+    resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"] <br>
+    location                  = var.location_map["region1"] <br>
+    tags                      = module.blueprint_foundations.tags <br>
+    virtual_network_name      = var.networking_transit.vnet.name <br>
+    subnet_id                 = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_subnets["Network_Monitoring"] <br>
+    network_security_group_id = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_nsg["Network_Monitoring"] <br>
+  } <br>
+  ##end of testing <br>
   
-  resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"] <br>
-  location                  = var.location_map["region1"] <br>
-  tags                      = module.blueprint_foundations.tags <br>
-  virtual_network_name      = var.networking_transit.vnet.name <br>
-  subnet_id                 = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_subnets["Network_Monitoring"] <br>
-  network_security_group_id = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_nsg["Network_Monitoring"] <br>
-  } <br>
- - F5BIGIP_Egress.tf <br>
+   - F5BIGIP_Egress.tf <br>
+  
+  ##start of testing <br>
   module "f5bigip" { <br>
-  ###  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
-  source  = "./blueprint_f5bigip" <br>
-   <br>
-  resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"] <br>
-  location                  = var.location_map["region1"] <br>
-  tags                      = module.blueprint_foundations.tags <br>
-  virtual_network_name      = var.networking_transit.vnet.name <br>
-  subnet_id                 = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_subnets["NetworkMonitoring"] <br>
-  network_security_group_id = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_nsg["NetworkMonitoring"] <br>
+    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
+   
+    resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"] <br>
+    location                  = var.location_map["region1"] <br>
+    tags                      = module.blueprint_foundations.tags <br>
+    virtual_network_name      = var.networking_transit.vnet.name <br>
+    subnet_id                 = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_subnets["NetworkMonitoring"] <br>
+    network_security_group_id = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_nsg["NetworkMonitoring"] <br>
   } <br>
+  ##end of testing <br>
+
+# ** you need to add your own public ssh-key in the container where ~/.ssh/id_rsa.pub 
