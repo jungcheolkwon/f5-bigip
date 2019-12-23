@@ -125,9 +125,9 @@ create blueprint_f5bigip directory with below files
 
   
 ## F5 modules under landingzone_vdc_demo
- - F5BIGIP_Egress.tf
+ - F5BIGIP_Egress.tf <br>
   module "f5bigip-egress" { <br>
-  #  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
+  ###  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
   source  = "./blueprint_f5bigip" <br>
   
   resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"] <br>
@@ -137,9 +137,9 @@ create blueprint_f5bigip directory with below files
   subnet_id                 = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_subnets["Network_Monitoring"] <br>
   network_security_group_id = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_nsg["Network_Monitoring"] <br>
   } <br>
- - F5BIGIP_Egress.tf
+ - F5BIGIP_Egress.tf <br>
   module "f5bigip" { <br>
-  #  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
+  ###  source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
   source  = "./blueprint_f5bigip" <br>
    <br>
   resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"] <br>
