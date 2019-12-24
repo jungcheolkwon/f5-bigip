@@ -1,7 +1,7 @@
 # Create F5 BIG-IP VM or General VM
-This module is supporting to create F5 BIG-IP VM with landingzone_vdc_demo( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) <br>which is more developped compared to the previous version blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility). <br><br>
+This module is supporting to create F5 BIG-IP VM with landingzone_vdc_demo <br> (https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/) <br>which is more developped to the previous version blueprints_tranquility <br>(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility). <br><br>
 This is working as one of its module and also you can use this for your own standalone VM creator after some modify.<br>
-You need to follow the above guide ( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) to prepare container and prerequisite things before this demo.
+You need to follow the above guide <br>(https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/) to prepare container and prerequisite things before this demo.
 
 # Getting Started
 You need to update VM and plan part of the variable.tf(https://github.com/jungcheolkwon/f5-bigip/blob/master/variables.tf) file for your environment. <br>
