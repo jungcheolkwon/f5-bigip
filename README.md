@@ -5,12 +5,17 @@ You can check the previous version detail from README_v0.md file.<br>
 You need to follow the above guide ( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) to easy success this demo.
 
 # Getting Started
-You need to update VM and plan part of the variable.tf file for your environment. <br>
+You need to update VM and plan part of the variable.tf(https://github.com/jungcheolkwon/f5-bigip/blob/master/variables.tf) file for your environment. <br>
 and add some inforamtion(your own information) to end of the foundations.tf file under landingzone_vdc_demo root diretory. <br>
+If you don't modify F5 module file, the bigip source will be came from github and I recommend you that source file clone in local container like blueprint_f5bigip from my demo.<br>
 You can use all of the defaults parameters for your testing after some files updating like blueprint.tf, output.tf under each blueprint_networking directories where you want to add BIG-IP with main module file for F5BIG-IP.
 
 If you want to add BIG-IP into blueprint_networking_shared_egress and blueprint_networking_shared_transit, <br>you need to edit 2 files (blueprint.tf, output.tf) in the each directory and add F5BIGIP_Egress.tf, F5BIGIP_Transit.tf in landingzone_vdc_demo directory.<br>
-Of course, you can use your won module's name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/vsc_container.png)
+Of course, you can use your won module's name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).<br>
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/f5bigip_transit.png)
+If you want to add NSG rules, you need to edit the blueprint_networking_shared_egress.sandpit.auto.tfvars or blueprint_networking_shared_transit.sandpit.auto.tfvars
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/nsg_rules.png)
 
 So, let's see example lines for each file.(you can copy and paste all lines from ##start of testing to ##end of testing for each file) <br>
 ## blueprint_networking_shared_egress
@@ -122,6 +127,7 @@ So, let's see example lines for each file.(you can copy and paste all lines from
   ##start of testing
   module "f5bigip-egress" {
     source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1"
+    #source  = "./blueprint_f5bigip"
     
     resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"]
     location                  = var.location_map["region1"]
@@ -138,6 +144,7 @@ So, let's see example lines for each file.(you can copy and paste all lines from
   ##start of testing
   module "f5bigip" {
     source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1"
+    #source  = "./blueprint_f5bigip"
    
     resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"]
     location                  = var.location_map["region1"]
