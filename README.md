@@ -1,19 +1,22 @@
 # Create F5 BIG-IP VM or General VM
-This module is supporting to create F5 BIG-IP VM with landingzone_vdc_demo( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ )which is more developped compared to the previous version blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility). <br>
-This is working as one of its module and also you can use this for your own standalone VM creator after some modify.
-You can check the previous version detail from README_v0.md file.<br>
-You need to follow the above guide ( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) to easy success this demo.
+This module is supporting to create F5 BIG-IP VM with landingzone_vdc_demo( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) <br>which is more developped compared to the previous version blueprints_tranquility(https://github.com/aztfmod/blueprints/tree/master/blueprint_tranquility). <br><br>
+This is working as one of its module and also you can use this for your own standalone VM creator after some modify.<br>
+You need to follow the above guide ( https://www.arnaudlheureux.io/2019/11/15/cloud-adoption-framework-landing-zones-with-terraform/ ) to prepare container and prerequisite things before this demo.
 
 # Getting Started
 You need to update VM and plan part of the variable.tf(https://github.com/jungcheolkwon/f5-bigip/blob/master/variables.tf) file for your environment. <br>
-and add some inforamtion(your own information) to end of the foundations.tf file under landingzone_vdc_demo root diretory. <br>
-If you don't modify F5 module file, the bigip source will be came from github and I recommend you that source file clone in local container like blueprint_f5bigip from my demo.<br>
+And add some inforamtion(your own information) to end of the foundations.tf file under landingzone_vdc_demo root diretory. <br>
+
+If you don't modify F5 module file, the bigip source will be came from github directly and I recommend you that source file clone in local container like blueprint_f5bigip from my demo with modify source part from F5BIGIP_Egress.tf or F5BIGIP_Transit.tf.<br>
+
 You can use all of the defaults parameters for your testing after some files updating like blueprint.tf, output.tf under each blueprint_networking directories where you want to add BIG-IP with main module file for F5BIG-IP.
 
 If you want to add BIG-IP into blueprint_networking_shared_egress and blueprint_networking_shared_transit, <br>you need to edit 2 files (blueprint.tf, output.tf) in the each directory and add F5BIGIP_Egress.tf, F5BIGIP_Transit.tf in landingzone_vdc_demo directory.<br>
 ![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/vsc_container.png)
+
 Of course, you can use your won module's name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).<br>
 ![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/f5bigip_transit.png)
+
 If you want to add NSG rules, you need to edit the blueprint_networking_shared_egress.sandpit.auto.tfvars or blueprint_networking_shared_transit.sandpit.auto.tfvars
 ![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/nsg_rules.png)
 
