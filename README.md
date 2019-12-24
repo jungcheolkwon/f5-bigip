@@ -11,11 +11,11 @@ If you don't modify F5 module file, the bigip source will be came from github an
 You can use all of the defaults parameters for your testing after some files updating like blueprint.tf, output.tf under each blueprint_networking directories where you want to add BIG-IP with main module file for F5BIG-IP.
 
 If you want to add BIG-IP into blueprint_networking_shared_egress and blueprint_networking_shared_transit, <br>you need to edit 2 files (blueprint.tf, output.tf) in the each directory and add F5BIGIP_Egress.tf, F5BIGIP_Transit.tf in landingzone_vdc_demo directory.<br>
-![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/vsc_container.png)
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/vsc_container.png)
 Of course, you can use your won module's name not use them(F5BIGIP_Egress.tf, F5BIGIP_Transit.tf).<br>
-![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/f5bigip_transit.png)
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/f5bigip_transit.png)
 If you want to add NSG rules, you need to edit the blueprint_networking_shared_egress.sandpit.auto.tfvars or blueprint_networking_shared_transit.sandpit.auto.tfvars
-![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/nsg_rules.png)
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/nsg_rules.png)
 
 So, let's see example lines for each file.(you can copy and paste all lines from ##start of testing to ##end of testing for each file) <br>
 ## blueprint_networking_shared_egress
@@ -155,4 +155,12 @@ So, let's see example lines for each file.(you can copy and paste all lines from
   }
   ##end of testing
 ```
-##  you need to add your own public ssh-key in the container where ~/.ssh/id_rsa.pub 
+###  you need to add your own public ssh-key in the container where ~/.ssh/id_rsa.pub 
+
+Now,let us run rover to build new VDC
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/run_plan.png)
+
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/ran_plan.png)
+
+then reload/check Azure portal what was happened
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/check_portal1.png)
