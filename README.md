@@ -17,133 +17,135 @@ So, let's see example lines for each file.(you can copy and paste all lines from
  - add following lines in blueprint.tf
  
 ```
- ##start of testing <br>
-  module "networking_shared_egress_vnet_vnet_nsg" { <br>
-    source  = "aztfmod/caf-virtual-network/azurerm" <br>
-    version = "0.2.0" <br>
+ ##start of testing
+  module "networking_shared_egress_vnet_vnet_nsg" {
+    source  = "aztfmod/caf-virtual-network/azurerm"
+    version = "0.2.0"
 
-    virtual_network_rg                = local.HUB-EGRESS-NET <br>
-    prefix                            = var.prefix <br>
-    location                          = var.location <br>
-    networking_object                 = var.networking_object <br>
-    tags                              = local.tags <br>
-    diagnostics_map                   = var.diagnostics_map <br>
-    log_analytics_workspace           = var.log_analytics_workspace <br>
-    diagnostics_settings              = var.networking_object.diagnostics <br>
-  } <br>
-   <br>
-  module "networking_shared_egress_vnet_vnet_subnets" { <br>
-    source  = "aztfmod/caf-virtual-network/azurerm" <br>
-    version = "0.2.0" <br>
+    virtual_network_rg                = local.HUB-EGRESS-NET
+    prefix                            = var.prefix
+    location                          = var.location
+    networking_object                 = var.networking_object
+    tags                              = local.tags
+    diagnostics_map                   = var.diagnostics_map
+    log_analytics_workspace           = var.log_analytics_workspace
+    diagnostics_settings              = var.networking_object.diagnostics
+  }
+  
+  module "networking_shared_egress_vnet_vnet_subnets" {
+    source  = "aztfmod/caf-virtual-network/azurerm"
+    version = "0.2.0"
 
-    virtual_network_rg                = local.HUB-EGRESS-NET <br>
-    prefix                            = var.prefix <br>
-    networking_object                 = var.networking_object <br>
-    tags                  = local.tags <br>
-    location              = var.location <br>
-    diagnostics_map                   = var.diagnostics_map <br>
-    log_analytics_workspace           = var.log_analytics_workspace <br>
-    diagnostics_settings              = var.networking_object.diagnostics <br>
-  } <br>
-  ##end of testing <br>
+    virtual_network_rg                = local.HUB-EGRESS-NET
+    prefix                            = var.prefix
+    networking_object                 = var.networking_object
+    tags                  = local.tags
+    location              = var.location
+    diagnostics_map                   = var.diagnostics_map
+    log_analytics_workspace           = var.log_analytics_workspace
+    diagnostics_settings              = var.networking_object.diagnostics
+  }
+  ##end of testing
 ```
 
  - add following lines in output.tf
-
-  ##start of testing <br>
-  output "resource_group" { <br>
-      value       = module.resource_group.names <br>
-  } <br>
+```
+  ##start of testing
+  output "resource_group" {
+      value       = module.resource_group.names
+  }
   
-  output "networking_shared_egress_vnet_vnet_nsg" { <br>
-      value       = module.networking_shared_egress_vnet.nsg_vnet <br>
-  } <br>
+  output "networking_shared_egress_vnet_vnet_nsg" {
+      value       = module.networking_shared_egress_vnet.nsg_vnet
+  }
   
-  output "networking_shared_egress_vnet_vnet_subnets" { <br>
-      value       = module.networking_shared_egress_vnet.vnet_subnets <br>
-  } <br>
-  ##end of testing <br>
-
+  output "networking_shared_egress_vnet_vnet_subnets" {
+      value       = module.networking_shared_egress_vnet.vnet_subnets
+  }
+  ##end of testing
+```
 
 ## blueprint_networking_shared_transit
  - blueprint.tf
+```
+  ##start of jc testing
+  module "networking_transit_vnet_vnet_nsg" {
+    source  = "aztfmod/caf-virtual-network/azurerm"
+    version = "0.2.0"
 
-  ##start of jc testing <br>
-  module "networking_transit_vnet_vnet_nsg" { <br>
-    source  = "aztfmod/caf-virtual-network/azurerm" <br>
-    version = "0.2.0" <br>
+    virtual_network_rg                = local.HUB-NET-TRANSIT
+    prefix                            = var.prefix
+    location                          = var.location
+    networking_object                 = var.networking_object
+    tags                              = local.tags
+    diagnostics_map                   = var.diagnostics_map
+    log_analytics_workspace           = var.log_analytics_workspace
+    diagnostics_settings              = var.networking_object.diagnostics
+  }
 
-    virtual_network_rg                = local.HUB-NET-TRANSIT <br>
-    prefix                            = var.prefix <br>
-    location                          = var.location <br>
-    networking_object                 = var.networking_object <br>
-    tags                              = local.tags <br>
-    diagnostics_map                   = var.diagnostics_map <br>
-    log_analytics_workspace           = var.log_analytics_workspace <br>
-    diagnostics_settings              = var.networking_object.diagnostics <br>
-  } <br>
+  module "networking_transit_vnet_vnet_subnets" {
+    source  = "aztfmod/caf-virtual-network/azurerm"
+    version = "0.2.0"
 
-  module "networking_transit_vnet_vnet_subnets" { <br>
-    source  = "aztfmod/caf-virtual-network/azurerm" <br>
-    version = "0.2.0" <br>
-
-    virtual_network_rg                = local.HUB-NET-TRANSIT <br>
-    prefix                            = var.prefix <br>
-    networking_object                 = var.networking_object <br>
-    tags                  = local.tags <br>
-    location              = var.location <br>
-    diagnostics_map                   = var.diagnostics_map <br>
-    log_analytics_workspace           = var.log_analytics_workspace <br>
-    diagnostics_settings              = var.networking_object.diagnostics <br>
-  } <br>
-  ##end of testing <br>
+    virtual_network_rg                = local.HUB-NET-TRANSIT
+    prefix                            = var.prefix
+    networking_object                 = var.networking_object
+    tags                  = local.tags
+    location              = var.location
+    diagnostics_map                   = var.diagnostics_map
+    log_analytics_workspace           = var.log_analytics_workspace
+    diagnostics_settings              = var.networking_object.diagnostics
+  }
+  ##end of testing
+```
 
  - output.tf
-
-  ##start of testing <br>
-  output "resource_group" { <br>
-      value       = module.resource_group.names <br>
-  } <br>
+```
+  ##start of testing
+  output "resource_group" {
+      value       = module.resource_group.names
+  }
   
-  output "networking_transit_vnet_vnet_nsg" { <br>
-      value       = module.networking_transit_vnet.nsg_vnet <br>
-  } <br>
+  output "networking_transit_vnet_vnet_nsg" {
+      value       = module.networking_transit_vnet.nsg_vnet
+  }
  
-  output "networking_transit_vnet_vnet_subnets" { <br>
-      value       = module.networking_transit_vnet.vnet_subnets <br>
-  } <br>
-  ##end of testing <br>
-
+  output "networking_transit_vnet_vnet_subnets" {
+      value       = module.networking_transit_vnet.vnet_subnets
+  }
+  ##end of testing
+```
 
 ## F5 modules under landingzone_vdc_demo
- - F5BIGIP_Egress.tf <br>
-
-  ##start of testing <br>
-  module "f5bigip-egress" { <br>
-    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
+ - F5BIGIP_Egress.tf
+```
+  ##start of testing
+  module "f5bigip-egress" {
+    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1"
     
-    resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"] <br>
-    location                  = var.location_map["region1"] <br>
-    tags                      = module.blueprint_foundations.tags <br>
-    virtual_network_name      = var.networking_transit.vnet.name <br>
-    subnet_id                 = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_subnets["Network_Monitoring"] <br>
-    network_security_group_id = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_nsg["Network_Monitoring"] <br>
-  } <br>
-  ##end of testing <br>
-  
-   - F5BIGIP_Egress.tf <br>
-  
-  ##start of testing <br>
-  module "f5bigip" { <br>
-    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1" <br>
-   
-    resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"] <br>
-    location                  = var.location_map["region1"] <br>
-    tags                      = module.blueprint_foundations.tags <br>
-    virtual_network_name      = var.networking_transit.vnet.name <br>
-    subnet_id                 = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_subnets["NetworkMonitoring"] <br>
-    network_security_group_id = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_nsg["NetworkMonitoring"] <br>
-  } <br>
-  ##end of testing <br>
+    resource_group_name       = module.blueprint_networking_shared_egress.resource_group["HUB-EGRESS-NET"]
+    location                  = var.location_map["region1"]
+    tags                      = module.blueprint_foundations.tags
+    virtual_network_name      = var.networking_transit.vnet.name
+    subnet_id                 = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_subnets["Network_Monitoring"]
+    network_security_group_id = module.blueprint_networking_shared_egress.networking_shared_egress_vnet_vnet_nsg["Network_Monitoring"]
+  }
+  ##end of testing
+ ``` 
 
-# ** you need to add your own public ssh-key in the container where ~/.ssh/id_rsa.pub 
+   - F5BIGIP_Egress.tf
+```  
+  ##start of testing
+  module "f5bigip" {
+    source  = "git@github.com:jungcheolkwon/f5-bigip.git?ref=v0.1"
+   
+    resource_group_name       = module.blueprint_networking_shared_transit.resource_group["HUB-NET-TRANSIT"]
+    location                  = var.location_map["region1"]
+    tags                      = module.blueprint_foundations.tags
+    virtual_network_name      = var.networking_transit.vnet.name
+    subnet_id                 = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_subnets["NetworkMonitoring"]
+    network_security_group_id = module.blueprint_networking_shared_transit.networking_transit_vnet_vnet_nsg["NetworkMonitoring"]
+  }
+  ##end of testing
+```
+##  you need to add your own public ssh-key in the container where ~/.ssh/id_rsa.pub 
