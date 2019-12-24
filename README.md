@@ -164,3 +164,28 @@ Now,let us run rover to build new VDC
 
 then reload/check Azure portal what was happened
 ![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/check_portal1.png)
+
+Now, Let us run rover with apply command
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/run_apply.png)
+
+reload again Azure portal / check what was happened
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/check_portal2.png)
+
+check transit resource group
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/check_transit.png)
+
+check egress resource group
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/check_egress.png)
+
+check egress bigip
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/bigip_egress.png)
+
+login egress bigip
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/login-bigip_egress.png)
+
+check transit bigip
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/bigip_transit.png)
+
+login transit bigip
+![example](https://github.com/jungcheolkwon/f5-bigip/blob/master/images/login-bigip_transit.png)
+
