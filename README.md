@@ -16,6 +16,7 @@ So, let's see example lines for each file.(you can copy and paste all lines from
 ## blueprint_networking_shared_egress
  - add following lines in blueprint.tf
  
+```
  ##start of testing <br>
   module "networking_shared_egress_vnet_vnet_nsg" { <br>
     source  = "aztfmod/caf-virtual-network/azurerm" <br>
@@ -45,6 +46,7 @@ So, let's see example lines for each file.(you can copy and paste all lines from
     diagnostics_settings              = var.networking_object.diagnostics <br>
   } <br>
   ##end of testing <br>
+```
 
  - add following lines in output.tf
 
