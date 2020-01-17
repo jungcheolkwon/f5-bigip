@@ -1,6 +1,6 @@
 #F5 BIG-IP Creating
 resource "azurerm_virtual_machine" "F5" {
-  count                 = "${var.nb_instances}"
+  count                 = var.nb_instances
   name                  = "${var.vm_hostname}-${count.index}"
   resource_group_name   = "${var.resource_group_name}"
   location              = "${var.location}"
