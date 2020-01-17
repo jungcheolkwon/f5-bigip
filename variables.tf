@@ -13,7 +13,7 @@ variable "tags" {
 
 variable "subnet_id" {
   description = "(Required) subnet id "
-  type = "string"
+#  type = "string"
   default = ""
 }
 
