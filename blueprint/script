@@ -1,7 +1,0 @@
-
-
-scp ubuntu@self:/home/ubuntu/blueprint.tar /tf/caf/landingzones/landingzone_vdc_demo/
-cd /tf/caf/landingzones/landingzone_vdc_demo/ && tar xf blueprint.tar && cd blueprint/ && ./copytoeach.sh
-cd ../
-rm /tf/caf/landingzones/landingzone_vdc_demo/blueprint.tar
-rm -rf /tf/caf/landingzones/landingzone_vdc_demo/blueprint
