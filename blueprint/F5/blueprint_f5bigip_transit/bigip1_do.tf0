@@ -1,0 +1,54 @@
+#https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/composing-a-declaration.html
+#https://www.terraform.io/docs/providers/bigip/r/bigip_do.html
+provider "bigip" {
+   address = "52.230.14.115:8443"
+   username = file("${var.user}")
+   password = file("${var.passwd}")
+}
+
+resource "bigip_net_vlan" "vlan1" {
+    name = "/Common/internal"
+    tag = 4094
+    interfaces = {
+#        vlanport = 1.0,
+        tagged = false
+    }
+}
+
+resource "bigip_net_selfip" "selfip1" {
+    name = "/Common/internalselfIP"
+    ip = "172.16.1.9/24"
+    vlan = "/Common/internal"
+    depends_on = [bigip_net_vlan.vlan1]
+}
+
+
+#resource "bigip_net_selfip" "selfip2" {
+#    name = "/Common/externalselfIP"
+#    ip = "10.1.10.246/24"
+#    vlan = "/Common/external"
+#    depends_on = ["bigip_net_vlan.vlan2"]
+#}
+
+resource "bigip_sys_ntp" "ntp1" {
+    description = "/Common/NTP1"
+    servers = ["time.google.com"]
+    timezone = "Asia/Singapore"
+}
+
+resource "bigip_sys_dns" "dns1" {
+    description = "/Common/DNS1"
+    name_servers = ["8.8.4.4"]
+    number_of_dots = 2
+    search = ["f5.com"]
+}
+
+#resource "bigip_net_vlan" "vlan2" {
+#    name = "/Common/external"
+#    tag = 102
+#    interfaces = {
+#        vlanport = 1.1,
+#        tagged = false
+#    }
+#}
+

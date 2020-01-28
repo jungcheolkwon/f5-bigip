@@ -1,0 +1,6 @@
+Error: Error Creating/Updating Virtual Network "bhzw_Shared_Transit" (Resource Group "bhzw-hub-network-transit"): network.VirtualNetworksClient#CreateOrUpdate: Failure sending request: StatusCode=400 -- Original Error: Code="InUseSubnetCannotBeDeleted" Message="Subnet NetworkMonitoring is in use by /subscriptions/9e15f7f5-cb3a-43d6-99c4-624c2faff15a/resourceGroups/bhzw-hub-network-transit/providers/Microsoft.Network/networkInterfaces/bigip1-NIC-0/ipConfigurations/ipconfig0 and cannot be deleted. In order to delete the subnet, delete all the resources within the subnet. See aka.ms/deletesubnet." Details=[]
+
+  on /home/vscode/.terraform.cache/modules/blueprint_networking_shared_transit.networking_transit_vnet_vnet_nsg/aztfmod-terraform-azurerm-caf-virtual-network-50f323b/module.tf line 3, in resource "azurerm_virtual_network" "vnet":
+   3: resource "azurerm_virtual_network" "vnet" {
+
+
